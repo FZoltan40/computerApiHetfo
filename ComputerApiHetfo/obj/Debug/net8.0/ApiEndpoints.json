@@ -1,15 +1,21 @@
 [
   {
-    "ContainingType": "ComputerApiHetfo.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
+    "ContainingType": "ComputerApiHetfo.Controllers.OsystemController",
+    "Method": "Post",
+    "RelativePath": "osystem",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "createOsDto",
+        "Type": "ComputerApiHetfo.Models.CreateOsDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ComputerApiHetfo.WeatherForecast, ComputerApiHetfo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "ComputerApiHetfo.Models.Osystem",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -17,7 +23,6 @@
         ],
         "StatusCode": 200
       }
-    ],
-    "EndpointName": "GetWeatherForecast"
+    ]
   }
 ]

@@ -52,5 +52,21 @@ namespace ComputerApiHetfo.Controllers
 
             return NotFound(new { message = "Nincs ilyen találat." });*/
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Osystem>> Put(Guid id, UpdateOsDto updateOsDto)
+        {
+            var existingOs = await computerContext.Osystems.FirstOrDefaultAsync(eos => eos.Id == id);
+
+            if (existingOs != null)
+            {
+                existingOs.Name = updateOsDto.Name;
+                computerContext.Osystems.Update(existingOs);
+                await computerContext.SaveChangesAsync();
+                return Ok(existingOs);
+            }
+
+            return NotFound(new { message = "Nincs ilyen találat." });
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ComputerApiHetfo.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ComputerApiHetfo.Controllers
 {
@@ -14,7 +15,7 @@ namespace ComputerApiHetfo.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Osystem> Post(CreateOsDto createOsDto)
+        public async Task<ActionResult<Osystem>> Post(CreateOsDto createOsDto)
         {
             var os = new Osystem
             {
@@ -24,12 +25,18 @@ namespace ComputerApiHetfo.Controllers
 
             if (os != null)
             {
-                computerContext.Osystems.Add(os);
-                computerContext.SaveChanges();
+                await computerContext.Osystems.AddAsync(os);
+                await computerContext.SaveChangesAsync();
                 return StatusCode(201, os);
             }
 
             return BadRequest();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<Osystem>> Get()
+        {
+            return Ok(await computerContext.Osystems.ToListAsync());
         }
     }
 }

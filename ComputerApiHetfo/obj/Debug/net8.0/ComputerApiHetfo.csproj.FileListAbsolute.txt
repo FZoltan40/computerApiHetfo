@@ -125,3 +125,5 @@ C:\Users\farka\GitWorkDir\ComputerApiHetfo\ComputerApiHetfo\bin\Debug\net8.0\run
 C:\Users\farka\GitWorkDir\ComputerApiHetfo\ComputerApiHetfo\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
 C:\Users\farka\GitWorkDir\ComputerApiHetfo\ComputerApiHetfo\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
 C:\Users\farka\GitWorkDir\ComputerApiHetfo\ComputerApiHetfo\obj\Debug\net8.0\ComputerApiHetfo.sourcelink.json
+C:\Users\farka\GitWorkDir\ComputerApiHetfo\ComputerApiHetfo\bin\Debug\net8.0\MailKit.dll
+C:\Users\farka\GitWorkDir\ComputerApiHetfo\ComputerApiHetfo\bin\Debug\net8.0\MimeKit.dll

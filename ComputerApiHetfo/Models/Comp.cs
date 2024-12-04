@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Text.Json.Serialization;
 
 namespace ComputerApiHetfo.Models;
 
@@ -19,5 +18,6 @@ public partial class Comp
 
     public Guid? OsId { get; set; }
 
+    [JsonIgnore]
     public virtual Osystem? Os { get; set; }
 }

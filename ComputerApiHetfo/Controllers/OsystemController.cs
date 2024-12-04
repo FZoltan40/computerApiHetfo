@@ -83,5 +83,20 @@ namespace ComputerApiHetfo.Controllers
 
             return NotFound(new { message = "Nincs ilyen találat." });
         }
+
+        [HttpGet("allosystem")]
+        public async Task<ActionResult<Osystem>> GetAllOsystem()
+        {
+            var allOsystem = await computerContext.Osystems.Include(osystem => osystem.Comps).ToListAsync();
+
+            if (allOsystem != null)
+            {
+                return Ok(allOsystem);
+            }
+
+            Exception e = new Exception();
+            return BadRequest(new { message = e.Message });
+
+        }
     }
 }

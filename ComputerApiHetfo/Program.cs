@@ -1,6 +1,7 @@
 
 using ComputerApiHetfo.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace ComputerApiHetfo
 {
@@ -10,11 +11,26 @@ namespace ComputerApiHetfo
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                                      policy =>
+                                      {
+                                          policy.WithOrigins("*")
+                                                                .AllowAnyHeader()
+                                                                .AllowAnyMethod();
+                                      });
+            });
+
             builder.Services.AddDbContext<ComputerContext>(option =>
             {
                 var connectionString = builder.Configuration.GetConnectionString("MySql");
                 option.UseMySQL(connectionString);
             });
+
+            builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             // Add services to the container.
 
@@ -31,6 +47,8 @@ namespace ComputerApiHetfo
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHttpsRedirection();
 
